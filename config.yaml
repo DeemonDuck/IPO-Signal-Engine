@@ -1,0 +1,11 @@
+data:
+  raw_path: data/raw_dataset.xlsx
+  processed_path: data/processed/ipo_feature_engineered.csv
+
+nifty:
+  start_date: 2009-01-01
+  end_date: 2026-01-01
+
+model:
+  test_size: 0.2
+  random_state: 42
