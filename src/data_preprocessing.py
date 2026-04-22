@@ -90,14 +90,24 @@ def remove_leakage(df):
 # 5. Final Cleaning
 # -----------------------------
 def clean_dataset(df):
+
     # Remove unnamed columns
     df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
 
     # Drop fully empty columns
     df = df.dropna(axis=1, how="all")
 
-    return df
+    # -----------------------------
+    # EDA-based cleaning (IMPORTANT)
+    # -----------------------------
 
+    # Drop rows with missing values
+    df = df.dropna()
+
+    # Drop redundant column identified during EDA
+    df = df.drop(columns=["Total"], errors="ignore")
+
+    return df
 
 # -----------------------------
 # 6. Save Dataset
